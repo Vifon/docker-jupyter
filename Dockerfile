@@ -6,6 +6,8 @@ RUN adduser -D notebook && mkdir /notebook && chown notebook:notebook /notebook
 USER notebook
 WORKDIR /notebook
 
+ADD ./jupyter_notebook_config.py /home/notebook/
+
 EXPOSE 5000
 
-CMD ["jupyter", "notebook", "--no-browser", "--ip=0.0.0.0", "--port=5000"]
+CMD ["jupyter", "notebook", "--config=/home/notebook/jupyter_notebook_config.py"]
