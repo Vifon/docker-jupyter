@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk --update add gcc g++ musl-dev python3 python3-dev && pip3 install jupyter && apk --purge del gcc g++ musl-dev python3-dev
+RUN apk --no-cache add gcc g++ libstdc++ musl-dev python3 python3-dev && pip3 install jupyter && apk --purge del gcc g++ musl-dev python3-dev
 
 RUN adduser -D notebook && mkdir /notebook && chown notebook:notebook /notebook
 USER notebook
